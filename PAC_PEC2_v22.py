@@ -7,64 +7,61 @@ Original file is located at
     https://colab.research.google.com/drive/1yWWxJ3I9bR0id-u-YUP3ANyaO_R1TuTd
 """
 
+
 BD = ['D','H','F']
 target = 'A'
 rules_used = []
 target_found = False
 no_rules_to_be_used = False
-num_rules = 10
+num_rules = 9
 
 def rules(id_rule, BD):
     if id_rule == 1:
-      if 'A' in BD and 'B' in BD:
-        return True,  'E'
+      if 'G' in BD and 'D' in BD:
+        return True,  'B'
       else:
         return False, ''
     elif id_rule == 2:
-      if 'A' in BD and 'C' in BD:
-        return True, 'F'
+      if 'F' in BD and 'G' not in BD:
+        return True, 'notE'
       else:
         return False, ''
     elif id_rule == 3:
-      if  'A' not in BD and 'B' in BD:
-        return True, 'D'
-      else:
-        return False, ''
-    elif id_rule == 4:
-      if 'A' not in BD and 'B' not in BD:
+      if  'H' in BD:
         return True, 'E'
       else:
         return False, ''
+    elif id_rule == 4:
+      if 'I' not in BD:
+        return True, 'I'
+      else:
+        return False, ''
     elif id_rule == 5:
-       if 'B' in BD and 'C'  in BD:
-        return True, 'F'
+       if 'F' in BD:
+        return True, 'C'
        else:
         return False, ''
     elif id_rule == 6:
-       if 'B' not in BD and 'C' not in BD:
-        return True, 'notF'
+       if 'I' not in BD and 'A' in BD:
+        return True, 'notA'
        else:
         return False, ''
     elif id_rule == 7:   
-       if 'D' in BD and 'F' not in BD:
-        return True, 'H'
+       if 'I' in BD:
+        return True, 'notE'
        else:
         return False, ''
     elif id_rule == 8:
-       if 'D' in BD and 'F' in BD:
-        return True, 'G'
+       if 'G' in BD:
+        return True, 'C'
        else:
         return False, ''
     elif id_rule == 9:
-       if 'E' in BD and 'F' in BD:
-        return True, 'H'
+       if 'C' in BD:
+        return True, 'A'
        else:
         return False, ''
-    elif id_rule == 10:
-       if 'E' in BD and  'F' not in BD:
-        return True, 'G'
-       else:
-        return False, ''
+  
 
 
 def select_rule(valid_rules):
@@ -81,19 +78,12 @@ while not target_found and not no_rules_to_be_used:
     rules_used.append(selected_rule)
     valid_rule, new_state = rules(selected_rule,BD)
     
-    # my code
 
-    if new_state=='notA':
-       BD.remove('A')
+    if new_state=='notE':
+       BD.remove('E')
     else:
        BD.append(new_state)
-
-	# where my code ends 
-
-   # if new_state =='notF':
-    #   BD.remove('F')
-  #  else:
-     #  BD.append(new_state)
+    
   
     print("selected_rule: " + str(selected_rule))
     print("BD: ")
