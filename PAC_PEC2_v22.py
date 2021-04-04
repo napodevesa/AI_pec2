@@ -7,8 +7,8 @@ Original file is located at
     https://colab.research.google.com/drive/1yWWxJ3I9bR0id-u-YUP3ANyaO_R1TuTd
 """
 
-BD = ['F']
-target = 'G'
+BD = ['D','H','F']
+target = 'A'
 rules_used = []
 target_found = False
 no_rules_to_be_used = False
@@ -80,10 +80,29 @@ while not target_found and not no_rules_to_be_used:
     selected_rule = select_rule(valid_rules)
     rules_used.append(selected_rule)
     valid_rule, new_state = rules(selected_rule,BD)
+   
+
+    if new_state=='notA':
+       BD.remove('A')
+ 
+
+    if new_state=='notB':
+       BD.remove('B')
+   
+    if new_state=='notC':
+       BD.remove('C')
+    
+
+    if new_state=='notD':
+       BD.remove('D')
+    
+    if new_state=='notE':
+       BD.remove('E')
+ 
+
     if new_state=='notF':
        BD.remove('F')
-    else:
-       BD.append(new_state)
+    
   
     print("selected_rule: " + str(selected_rule))
     print("BD: ")
